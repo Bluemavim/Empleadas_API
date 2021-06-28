@@ -16,7 +16,7 @@ public class CategoriaController {
     @Autowired
     private CategoriaService service;
 
-    @PostMapping("/categorias") //Ningun web method devuelve void
+    @PostMapping("/categorias") 
     public ResponseEntity<?> crearCategoria(@RequestBody Categoria categoria){
         
         GenericResponse respuesta = new GenericResponse();
@@ -26,16 +26,15 @@ public class CategoriaController {
 
         respuesta.isOk = true;
         respuesta.id = categoria.getCategoriaId();
-        respuesta.message = "La categoria fue creada con exito";
+        respuesta.message = "La categoria fue creada con éxito";
 
         return ResponseEntity.ok(respuesta);
 
     }
 
-    //GET /categorias
-    @GetMapping("/categorias") //hacer el mapping
-    public ResponseEntity<List<Categoria>> traerCategorias (){ //return Response Entity
-        return ResponseEntity.ok(service.traerCategorias()); //return entity con el valor esperado
+    @GetMapping("/categorias") 
+    public ResponseEntity<List<Categoria>> traerCategorias (){ 
+        return ResponseEntity.ok(service.traerCategorias()); 
     }
 
 }
